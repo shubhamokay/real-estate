@@ -67,7 +67,7 @@ const Profile = () => {
               {`Uploading ${filePercentage}`}
             </span>
           ) : filePercentage == 100 ? (
-              <span className="text-green-700">Image successfully uploaded !</span>
+              <span className="text-green-700">Image uploaded successfully!</span>
             ) : (
               ''
           )
