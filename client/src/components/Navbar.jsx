@@ -3,7 +3,7 @@ import { FaSearch } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const Header = () => {
+const Navbar = () => {
   const { currentUser } = useSelector((state) => state.user);
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
@@ -59,6 +59,11 @@ const Header = () => {
               About
             </li>
           </Link>
+          <Link to="/faq">
+            <li className="hidden sm:inline text-slate-700 hover:underline">
+              FAQ's
+            </li>
+          </Link>
           <Link to="/profile">
             {currentUser ? (
               <img
@@ -76,4 +81,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Navbar;

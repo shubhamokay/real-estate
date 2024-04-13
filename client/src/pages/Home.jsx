@@ -5,6 +5,8 @@ import { Navigation } from "swiper/modules";
 import SwiperCore from "swiper";
 import "swiper/css/bundle";
 import ListingItem from "../components/ListingItem";
+import CountUp from "react-countup";
+import { motion } from "framer-motion";
 
 const Home = () => {
   SwiperCore.use([Navigation]);
@@ -40,27 +42,64 @@ const Home = () => {
         const data = await res.json();
         setSaleListings(data);
       } catch (error) {
-        log(error);
+        console.log(error);
       }
     };
     fetchOfferListings();
   }, []);
 
   return (
-    <div>
+    <div className="">
       {/* top */}
       <div className="flex flex-col gap-6 py-28 px-3 max-w-6xl mx-auto">
-        <h1 className="text-slate-700 font-bold text-3xl lg:text-6xl">
-          Find your next <span className="text-slate-500">perfect</span> <br />
-          place with ease
-        </h1>
-        <div className="text-gray-400 text-xs sm:text-sm">
-          Welcome to Estate Ease, your gateway to exquisite living spaces and
-          investment opportunities.
+        <motion.h1
+          initial={{ y: "2rem", opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{
+            duration: 3,
+            type: "ease-in",
+          }}
+        >
+          <h1 className="text-slate-700 font-bold text-3xl lg:text-6xl">
+            Find Your Next Perfect Place <br />
+            with Ease
+          </h1>{" "}
           <br />
-          Explore our collection of exceptional properties and start your
-          journey to a new beginning.
-        </div>
+          <div className="text-gray-600 text-3xl lg:text-2xl">
+            Welcome to Estate Ease, your gateway to exquisite living spaces and
+            investment opportunities.
+            <br />
+            Explore our collection of exceptional properties and start your
+            journey to a new beginning.
+          </div>
+        </motion.h1 >
+
+          <div className="flex flex-wrap gap-6 ">
+            <div className="font-bold text-2xl text-slate-800 text-center">
+              <span>
+                <CountUp start={7500} end={9000} duration={4} /> <span>+ </span>
+              </span>{" "}
+              <br />
+              <span className="">Premium Products</span>
+            </div>
+
+            <div className="font-bold text-2xl text-slate-800 text-center">
+              <span>
+                <CountUp start={1500} end={2000} duration={4} /> <span>+ </span>
+              </span>{" "}
+              <br />
+              <span className="">Happy Customers</span>
+            </div>
+
+            <div className="font-bold text-2xl text-slate-800 text-center">
+              <span>
+                <CountUp end={33} /> <span>+ </span>
+              </span>{" "}
+              <br />
+              <span className="">Awards Winning</span>
+            </div>
+          </div>
+
         <Link
           to={"/search"}
           className="text-xs sm:text-sm text-blue-800 font-bold hover:underline"
